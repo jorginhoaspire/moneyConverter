@@ -1,6 +1,8 @@
 import requests;
 
 def MoneyConverter(mda_origem, mda_destino, valor):
+    if valor < 0:
+        raise ValueError("O valor convertido não pode ser negativo.")
     url = f"https://economia.awesomeapi.com.br/last/{mda_origem}-{mda_destino}"
     response = requests.get(url)
     
