@@ -6,7 +6,12 @@ def MoneyConverter(mda_origem, mda_destino, valor):
     
     if response.status_code == 200:
         data = response.json()
+        if mda_origem == '':
+            mda_origem = 'USD'
+        if mda_destino == '':
+            mda_destino = 'EUR'
         cotacao = data[f"{mda_origem}{mda_destino}"]['bid']
+        print(f"Valor de 1.00 {mda_origem} é de {cotacao} {mda_destino}.")
         valor_convertido = float(cotacao) * valor
         return valor_convertido
     else:
